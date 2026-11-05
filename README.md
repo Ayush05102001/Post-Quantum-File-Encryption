@@ -1,5 +1,3 @@
-
-````markdown
 # Post-Quantum File Sharing with ML-KEM
 
 Encrypt a file on one machine so that only one specific receiver can open it, using **ML-KEM-768** (FIPS 203), the post-quantum key-encapsulation standard. Built entirely from OpenSSL command-line tools and bash.
@@ -167,4 +165,3 @@ This decapsulates one ciphertext with the right key and with a wrong key. The wr
 - [FIPS 203: ML-KEM](https://csrc.nist.gov/pubs/fips/203/final)
 - [RFC 5869: HKDF](https://www.rfc-editor.org/rfc/rfc5869)
 - `man openssl-pkeyutl`, `man openssl-kdf`, `man openssl-enc`
-````
