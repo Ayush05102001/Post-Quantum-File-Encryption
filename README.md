@@ -2,7 +2,7 @@
 
 ML-KEM is a modern cryptographic algorithm designed to protect encryption keys against attacks from both traditional computers and future quantum computers.
 
-Encrypt a file on one machine so that only one specific receiver can open it, using **ML-KEM-768** (FIPS 203), the post-quantum key-encapsulation standard. Built entirely from OpenSSL command-line tools and bash.
+We will encrypt a file on one machine so that only one specific receiver can open it, using **ML-KEM-768** (FIPS 203), the post-quantum key-encapsulation standard. Built entirely from OpenSSL command-line tools and bash.
 
 The example setup is two machines:
 
