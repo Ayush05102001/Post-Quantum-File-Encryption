@@ -99,7 +99,6 @@ sudo apt install -y zip unzip xxd openssh-server
 - **The HMAC does not prove who sent the archive.** Sender and receiver can both compute the MAC key, so either could have made the tag.
 - **Keys appear briefly in process arguments.** OpenSSL's `enc -K`, `kdf hexkey:` and `-macopt hexkey:` accept keys only as arguments. The scripts read keys from files at call time, so keys never enter shell history, but they are visible in `ps` while each command runs.
 - **Secure deletion is best effort.** The scripts use `shred -u` on Linux and `rm -P` on macOS. On SSDs and copy-on-write file systems, overwriting is not guaranteed to reach the physical blocks.
-- Private keys are excluded by `.gitignore`. Never commit them.
 
 ## Project structure
 
