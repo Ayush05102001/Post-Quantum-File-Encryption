@@ -61,12 +61,22 @@ The receiver reverses this: it decapsulates `kem.bin` with its private key, runs
 
 The file key, shared secret, KEK, envelope IV and MAC key are destroyed by the sender before the script exits.
 
-## Requirements
-
-- **OpenSSL 3.5 or newer** (ML-KEM is built in from 3.5).
-- `xxd`, `zip`, `unzip`.
-- Bash. The scripts run on macOS's built-in bash 3.2 and on Linux.
-
+## Prerequisites
+ 
+Everything below must be in place before you run any script.
+ 
+### Both machines
+ 
+| Requirement | Why it is needed | How to check |
+|---|---|---|
+| **OpenSSL 3.5 or newer** | ML-KEM-768, HKDF and HMAC are built into the default provider from 3.5 | `openssl version` and `openssl list -kem-algorithms \| grep -i ml-kem` |
+| **Bash** | all scripts are bash scripts (macOS's built-in bash 3.2 works) | `bash --version` |
+| **xxd** | converts binary keys to hex for OpenSSL | `xxd -v` |
+| **zip** and **unzip** | build and open the archive | `zip -v`, `unzip -v` |
+| **Standard Unix tools** | `head`, `tail`, `cmp`, `wc`, `mktemp`, `find` (preinstalled on macOS and Ubuntu) | |
+| **git** (optional) | to clone this repository | `git --version` |
+ 
+ 
 ### macOS (sender)
 
 macOS ships LibreSSL, which has no ML-KEM. Install OpenSSL with Homebrew and put it first on your `PATH`:
