@@ -1,5 +1,7 @@
 # Post-Quantum File Sharing with ML-KEM
 
+ML-KEM is a modern cryptographic algorithm designed to protect encryption keys against attacks from both traditional computers and future quantum computers.
+
 Encrypt a file on one machine so that only one specific receiver can open it, using **ML-KEM-768** (FIPS 203), the post-quantum key-encapsulation standard. Built entirely from OpenSSL command-line tools and bash.
 
 The example setup is two machines:
@@ -76,7 +78,7 @@ Everything below must be in place before you run any script.
 | **Standard Unix tools** | `head`, `tail`, `cmp`, `wc`, `mktemp`, `find` (preinstalled on macOS and Ubuntu) | |
 | **git** (optional) | to clone this repository | `git --version` |
  
- 
+
 ### macOS (sender)
 
 macOS ships LibreSSL, which has no ML-KEM. Install OpenSSL with Homebrew and put it first on your `PATH`:
