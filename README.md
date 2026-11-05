@@ -106,14 +106,14 @@ sudo apt install -y zip unzip xxd openssh-server
 ```
 .
 ├── README.md
-├── .gitignore
+├── images/
+    ├── basic-MLKEM-flow.png           
+    ├── decrypted-file.png           
+    ├── tag-match.png           
+    └── unzip-archive.png       
 └── scripts/
-    ├── common.sh                   shared helpers (HKDF, HMAC, cleanup)
-    ├── check_env.sh                checks OpenSSL and tools
-    ├── keygen.sh                   receiver: create ML-KEM-768 key pair
-    ├── sender_encrypt.sh           sender: build the archive
-    ├── receiver_decrypt.sh         receiver: verify tag and decrypt
-    └── demo_implicit_rejection.sh  shows wrong-key decapsulation
+    ├── receiver_side.sh           
+    └── sender_side.sh.sh   
 ```
 
 ## References
