@@ -73,8 +73,6 @@ macOS ships LibreSSL, which has no ML-KEM. Install OpenSSL with Homebrew and put
 
 ```bash
 brew install openssl@3
-echo 'export PATH="$(brew --prefix openssl@3)/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
 ```
 
 ### Linux VM (receiver)
@@ -82,60 +80,6 @@ source ~/.zshrc
 ```bash
 sudo apt install -y zip unzip xxd openssh-server
 ```
-
-Ubuntu 26.04 ships OpenSSL 3.5. On 22.04 or 24.04, build OpenSSL 3.5 into `/opt` and put it first on your `PATH`; do not replace the system OpenSSL.
-
-### Check both machines
-
-```bash
-./scripts/check_env.sh
-```
-
-## Usage
-
-Replace `VMUSER` and `VMIP` with the VM's username and IP address (`whoami` and `hostname -I` on the VM).
-
-**1. Receiver (VM): create a key pair.**
-
-```bash
-./scripts/keygen.sh receiver
-```
-
-**2. Sender (Mac): fetch the receiver's public key.**
-
-```bash
-scp VMUSER@VMIP:~/mlkem-file-sharing/receiver.kem.pub .
-```
-
-**3. Sender (Mac): encrypt.**
-
-```bash
-./scripts/sender_encrypt.sh receiver.kem.pub myfile.pdf archive.zip
-```
-
-The script prints the SHA-256 of the original so you can compare it later.
-
-**4. Sender (Mac): send the archive.**
-
-```bash
-scp archive.zip VMUSER@VMIP:~/mlkem-file-sharing/
-```
-
-**5. Receiver (VM): decrypt.**
-
-```bash
-./scripts/receiver_decrypt.sh receiver.kem.priv archive.zip myfile.pdf
-```
-
-If the printed SHA-256 matches the sender's, the file arrived byte for byte.
-
-### See implicit rejection
-
-```bash
-./scripts/demo_implicit_rejection.sh
-```
-
-This decapsulates one ciphertext with the right key and with a wrong key. The wrong key gets a different, normal-looking secret and exit code 0. ML-KEM never reports failure, because a visible failure would leak information about the private key. That is why the receiver trusts the envelope only after its HMAC tag matches.
 
 ## Security notes and limitations
 
